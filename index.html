@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page of Book Store</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;1,100;1,200;1,300&family=Roboto&family=Sometype+Mono&display=swap');
+       *{
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto','sans-serif';
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            list-style: none;
+            text-transform: capitalize;
+            transition: all .2s linear;
+            transition: width none;
+        }
+        html{
+            scroll-behavior: smooth;
+        }
+        #search input{
+            width:  25rem;
+            height: 2rem;
+            border: .1rem solid rgba(5, 4, 4, 0.1);
+            padding-left: 1rem;
+            font-weight: 200;
+            border-radius: .2rem;
+        }
+        #search i{
+            position: absolute;
+            margin-left: -1.8rem;
+            color: #27ae60;
+            margin-top: .5rem;
+            font-size: larger;
+            
+        }
+        .div1{
+            height: 3rem;
+            /* margin-top: .5rem; */
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .div1 i{
+            font-size: x-large;
+            cursor: pointer;
+        }
+        .div2{
+            height: 3rem;
+            background-color: #27ae60;
+            display: grid;
+            place-items: center;
+        }
+        .div2 ul{
+            width: 40%;
+            display: flex;
+            justify-content: space-around;
+            
+        }
+        .div2 ul a{
+            color: white;
+        }
+        .div2 ul a:hover{
+            color: #F6D860;
+            transform: scale(1);
+            /* transition:all ease-in .3s; */
+        }
+        .a{
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            padding: 0 5rem 0 5rem;
+        }
+        .a .content{
+            flex: 1 1 42rem;
+            justify-content: center;
+            align-items: center;
+        }
+        .a .slider{
+            flex: 1 1 40rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .a .slider a img{
+            height: 24rem;
+            width: 12rem;
+        }
+        .a .slider a:hover img{
+            transition: .3s;
+            transform: scale(.9);
+        }
+        .a .slider .stand{
+            width: 100%;
+            margin-top: -2rem;
+        }
+        .a .content h3{
+            color: #000000;
+            font-size: 1.5rem;
+            line-height: 2;
+            padding: 1rem 0;
+            font-family: 'popins';
+        }
+        #btn{
+            width: 6rem;
+            height: 2rem;
+            background-color: #27ae60;
+            color: white;
+            font-weight: bold;
+            border-radius: .3rem;
+            cursor: pointer;
+        }
+        .b{
+            height: 8rem;
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+        }
+        .ship,.pay,.return,.support{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
+        .b i{
+            font-size: 2rem;
+            color: #27ae60;
+        }
+       .feat,#new_books{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+       }
+       .reviews{
+       width: 100%;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       }
+        .featured{
+            width: 90%;
+        }
+        .featured .featured-slider  .box {
+            width: 5rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            border: .1rem solid rgba(5, 4, 4, 0.1);
+            text-align: center;
+        }
+        .featured .featured-slider  .box:hover{
+            border: .1rem solid rgb(28, 27, 27);
+        }
+        .featured .featured-slider  .box:hover img{
+            transform: translateY(1.2rem);
+        }
+        .featured .featured-slider  .box .image{
+            padding: 1rem;
+            background: linear-gradient(15deg,#eee 30%,#fff 30.1%);
+        }
+        .featured .featured-slider  .box .image img{
+            height: 10rem;
+        }
+        .featured .featured-slider  .box .icons{
+            border-bottom: .1rem solid #444;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background: #fff;
+            z-index: 1;
+            transform: translateY(-100%);
+        } 
+        .featured .featured-slider  .box:hover .icons{
+            transform: translateY(0%);
+        }
+        .featured .featured-slider  .box .icons a{
+            color: #444;
+            font-size: 1.4rem;
+            padding: .2rem;
+            /* margin: 1.5rem; */
+        }
+        .featured .featured-slider  .box .icons a:hover{
+            background: #27ae60;
+            color: #fff;
+
+        }
+        .price span{
+            text-decoration: line-through;
+            color: gray;
+            font-size: .8rem;
+        }
+        .next,.prev{
+            color: #27ae60;
+        }
+        .dis{
+            background:rgba(228,236,249,255);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+        }
+        .book{
+            /* border: 1px solid red; */
+            width: 45%;
+            height: 25rem;
+        }
+        .book img{
+            width: 100%;
+            height: 100%;
+        }
+        .discontent{
+            /* border: 1px solid red; */
+            width: 45%;
+        }
+        .reviews .reviews-slider .box{
+            /* border: 2px solid black; */
+            width: 20rem;
+            height: 20rem;
+            border:1px solid #e7e7e7;
+            padding: 2rem;
+            text-align: center;
+        }
+        .reviews .reviews-slider .box img{
+            width: 7rem;
+            height: 7rem;
+            border-radius: 50%;
+            object-fit: cover;
+        } 
+        .reviews .reviews-slider .box h3{
+            color: black;
+            font-size: 2.2rem;
+            /* padding: .5rem 0; */
+
+        }
+        .reviews .reviews-slider .box  p{
+            color: #4b4848;
+            font-size: .9rem;
+            /* padding: 1rem 0; */
+            line-height: 1.2;
+        }
+        .reviews .reviews-slider .box i{
+            font-size: 1.2rem;
+            color: #27ae60;
+        }
+        .revdiv{
+            width: 90%;
+        }
+        /* #im img{
+            width: 10rem;
+            height: 10rem;
+        } */
+        /* for footer */
+        .row{
+	display: flex;
+	flex-wrap: wrap;
+    justify-content: space-around;
+}
+ul{
+	list-style: none;
+}
+        .footer{
+	background-color: #24262b;
+    padding: 70px 0;
+}
+.footer-col{
+   width: 25%;
+   padding: 0 15px;
+}
+.footer-col h4{
+	font-size: 18px;
+	color: #ffffff;
+	text-transform: capitalize;
+	margin-bottom: 35px;
+	font-weight: 500;
+	position: relative;
+}
+.footer-col h4::before{
+	content: '';
+	position: absolute;
+	left:0;
+	bottom: -10px;
+	background-color: #e91e63;
+	height: 2px;
+	box-sizing: border-box;
+	width: 50px;
+}
+.footer-col ul li:not(:last-child){
+	margin-bottom: 10px;
+}
+.footer-col ul li a{
+	font-size: 16px;
+	text-transform: capitalize;
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: 300;
+	color: #bbbbbb;
+	display: block;
+	transition: all 0.3s ease;
+}
+.footer-col ul li a:hover{
+	color: #ffffff;
+	padding-left: 8px;
+}
+.footer-col .social-links a{
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+    padding-top: .2rem;
+    font-size: larger;
+	background-color: white;
+	margin:0 10px 10px 0;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 50%;
+	color: #ffffff;
+	transition: all 0.5s ease;
+}
+
+/*responsive*/
+/* @media(max-width: 767px){
+  .footer-col{
+    width: 50%;
+    margin-bottom: 30px;
+}
+}
+@media(max-width: 574px){
+  .footer-col{
+    width: 100%;
+}
+} */
+    </style>
+</head>
+<body>
+    <header>
+        <div class="div1">
+            <label><i class='bx bxs-book' style="color: #27ae60;"></i>&nbsp;<b style="font-family: 'poppins','sans-serif'; font-size: larger;">Bookly</b></label>
+            <span id="search"><input type="text" placeholder="search here..."><i class='bx bx-search-alt' ></i></span>
+            <span>
+                <i class='bx bx-heart' ></i>&nbsp;&nbsp;
+                <i class='bx bx-cart-alt' ></i>&nbsp;&nbsp;
+                <i class='bx bxs-user' ></i>&nbsp;&nbsp;
+            </span>
+        </div>
+        <div class="div2">
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="#feat">Featured</a></li>
+                <li><a href="#discount">Discount</a></li>
+                <li><a href="#new_books">New Books</a></li>
+                <li><a href="#">Reviews</a></li>
+            </ul>
+        </div>
+    </header>
+    <!-- -------------------body--------------------------------- -->
+    <section >
+        <div class="a" >
+            <div class="content">
+                <h3>Upto 75% off</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, molestias nihil ipsum alias officiis iste eligendi enim consequuntur sequi autem?</p><br>
+                <a href="#"><button id="btn" type="button">Shop now</button></a>
+            </div>
+            <div class="swiper slider">
+                <div class="swiper-wrapper wrapper ">
+                    <a href="#" class="swiper-slide"><img src="images/image1.jpg" alt=""></a>
+                    <a href="#" class="swiper-slide"><img src="images/image2.jpg" alt=""></a>
+                    <a href="#" class="swiper-slide"><img src="images/image3.jpg" alt=""></a>
+                    <a href="#" class="swiper-slide"><img src="images/image4.jpg" alt=""></a>
+                    <a href="#" class="swiper-slide"><img src="images/image5.jpg" alt=""></a>
+                    <a href="#" class="swiper-slide"><img src="images/image6.jpg" alt=""></a>
+                </div>
+                <img src="images/stand.png" alt="" class="stand">
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="b">
+            <div class="ship">
+                <div class="icon"><i class='bx bxs-truck'></i></div>
+                <div class="con">
+                    <h3>Free Shipping</h3>
+                    <p>order over Rs.500</p>
+                </div>
+            </div>
+            <div class="pay">
+                <div class="icon"><i class='bx bx-lock-alt' ></i></div>
+                <div class="con">
+                    <h3>Secure Payment</h3>
+                    <p>100% secure payment</p>
+                </div>
+            </div>
+            <div class="return">
+                <div class="icon"><i class='bx bx-revision'></i></div>
+                <div class="con">
+                    <h3>Easy return</h3>
+                    <p>10 Days Return</p>
+                </div>
+                
+            </div>
+            <div class="support">
+                <div class="icon"><i class='bx bx-support' ></i></div>
+                <div class="con">
+                    <h3>24/7 Support</h3>
+                    <p>call us anytime</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+   <section class="feat" id="feat">
+    <div class="featured" id="featured">
+        <h1 style="text-align: center;">featured books</h1>
+        <div class="swiper featured-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image1.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image2.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image3.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image4.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image5.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image6.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image1.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image2.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image3.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image4.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+            </div>
+            <div class="swiper-button-next next" ></div>
+            <div class="swiper-button-prev prev" ></div>
+        </div>
+    </div>
+   </section>
+
+   <section id="discount">
+
+    <div class="dis">
+        <div class="book">
+            <img src="images/discbook.png" alt="">
+        </div>
+        <div class="discontent">
+            <h1>Up to 70% discount</h1><br>
+            <p>take advante of the Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium magnam sapiente nihil corrupti laborum debitis omnis qui quos odit ducimus reprehenderit fugiat inventore quia similique nemo beatae, illo aliquam perferendis laboriosam, dignissimos commodi a ullam eos! Praesentium qui alias officiis sequi dolore esse ipsa cumque, adipisci quidem earum consectetur ab.
+            
+            </p><br><br>
+            <a href="#"><button id="btn">Shop now</button></a>
+        </div>
+    </div>
+
+   </section>
+
+   <section id="new_books">
+
+    <div class="featured" id="featured">
+        <br>
+        <h1 style="text-align: center;">new books</h1>
+        <div class="swiper featured-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image1.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image2.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image3.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image4.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image5.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image6.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image1.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image2.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image3.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image4.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+            </div>
+            <div class="swiper-button-next next" ></div>
+            <div class="swiper-button-prev prev" ></div>
+        </div>
+    </div>
+    <div class="featured" id="featured">
+        <br>
+        <!-- <h1 style="text-align: center;">new books</h1> -->
+        <div class="swiper featured-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image1.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image2.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image3.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image4.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image5.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image6.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image1.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image2.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image3.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+
+                 <div class="swiper-slide box">
+                    <div class="icons">
+                     <a href="#"class='bx bx-heart'></a>
+                     <a href="#"class='bx bx-cart'></a>
+                     <a href="#"class='bx bx-share'></a>
+                    </div>
+                    <div class="image">
+                     <img src="images/image4.jpg" alt="">
+                    </div>
+                    <div class="contant">
+                     <!-- <h3>featured books</h3> -->
+                     <div class="price">Rs.499 <span> Rs.999</span></div>
+                     <a href="#"><button type="button" id="btn">add to cart</button></a>
+                    </div>
+                 </div>
+            </div>
+            <div class="swiper-button-next next" ></div>
+            <div class="swiper-button-prev prev" ></div>
+        </div>
+    </div>
+   </section>
+   <!-- testimonial -->
+   <section class="reviews" id="review">
+    <div class="revdiv">
+        <h1 class="heading" style="text-align: center;">What our clinet's says</h1>
+        <div class="swiper reviews-slider">
+            <div class="swiper-wrapper">
+                <div class="box swiper-slide" id="im">
+                    <img src="images/pic1.avif" alt="">
+                    <h3>Rishikesh</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quisquam, id consequatur adipisci placeat iste quidem corporis voluptate? Adipisci, omnis.</p>
+                    <div class="stars">
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star-half' ></i>
+                    </div>
+                </div>
+    
+                <div class="box swiper-slide" id="im">
+                    <img src="images/pic2.jpeg" alt="">
+                    <h3>Rakesh</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quisquam, id consequatur adipisci placeat iste quidem corporis voluptate? Adipisci, omnis.</p>
+                    <div class="stars">
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star-half' ></i>
+                    </div>
+                </div>
+    
+                <div class="box swiper-slide" id="im">
+                    <img src="images/pic3.jpg" alt="">
+                    <h3>Mukuesh</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quisquam, id consequatur adipisci placeat iste quidem corporis voluptate? Adipisci, omnis.</p>
+                    <div class="stars">
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star-half' ></i>
+                    </div>
+                </div>
+    
+                <div class="box swiper-slide" id="im">
+                    <img src="images/pic4.jpeg" alt="">
+                    <h3>Rohan</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quisquam, id consequatur adipisci placeat iste quidem corporis voluptate? Adipisci, omnis.</p>
+                    <div class="stars">
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star-half' ></i>
+                    </div>
+                </div>
+    
+                <div class="box swiper-slide" id="im">
+                    <img src="images/pic5.jpeg" alt="">
+                    <h3>AAdi Manav</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quisquam, id consequatur adipisci placeat iste quidem corporis voluptate? Adipisci, omnis.</p>
+                    <div class="stars">
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star-half' ></i>
+                    </div>
+                </div>
+    
+                <div class="box swiper-slide" id="im">
+                    <img src="images/pic7.jpg" alt="">
+                    <h3>Mohan Raj</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quisquam, id consequatur adipisci placeat iste quidem corporis voluptate? Adipisci, omnis.</p>
+                    <div class="stars">
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star-half' ></i>
+                    </div>
+                </div>
+    
+                <div class="box swiper-slide" id="im">
+                    <img src="images/pic1.avif" alt="">
+                    <h3>Sukhi Sinha</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quisquam, id consequatur adipisci placeat iste quidem corporis voluptate? Adipisci, omnis.</p>
+                    <div class="stars">
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star-half' ></i>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next next" ></div>
+            <div class="swiper-button-prev prev" ></div>
+        </div>
+    </div>
+   </section>
+   <footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>company</h4>
+                <ul>
+                    <li><a href="#">about us</a></li>
+                    <li><a href="#">our services</a></li>
+                    <li><a href="#">privacy policy</a></li>
+                    <li><a href="#">affiliate program</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>get help</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">9933112244</a></li>
+                    <li><a href="#">abc@gmail.com</a></li>
+                    <!-- <li><a href="#">order status</a></li> -->
+                    <!-- <li><a href="#">payment options</a></li> -->
+                </ul>
+            </div>
+            <!-- <div class="footer-col"> -->
+                <!-- <h4>online shop</h4> -->
+                <!-- <ul>
+                    <li><a href="#">watch</a></li>
+                    <li><a href="#">bag</a></li>
+                    <li><a href="#">shoes</a></li>
+                    <li><a href="#">dress</a></li>
+                </ul> -->
+            <!-- </div> -->
+            <div class="footer-col">
+                <h4>follow us</h4>
+                <div class="social-links">
+                    <a href="#"><i class='bx bxl-instagram' style="color: rgb(228, 107, 127);"></i></a>
+                    <a href="#"><i class='bx bxl-facebook'  style="color: rgb(50, 81, 172);"></i></a>
+                    <a href="#"></i><i class='bx bxl-youtube'  style="color: rgb(206, 13, 13);"></i></a>
+                    <a href="#"></i><i class='bx bxl-twitter'  style="color: rgb(5, 141, 199);"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- @@@@@@@@@@@@@@@@@@@javascript@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+         var swiper = new Swiper(".slider", {
+            loop:true,
+            centeredSlides:true,
+            autoplay:{
+                delay:2500,
+                disableOnInteraction:false,
+            },
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+        },
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+      },
+    });
+
+    // for featured books
+    var swiper = new Swiper(".featured-slider", {
+            spaceBetween:10,
+            loop:true,
+            centeredSlides:true,
+            autoplay:{
+                delay:9000,
+                disableOnInteraction:false,
+            },
+            navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+        },
+        450: {
+          slidesPerView: 2,
+        },
+        768: {
+          slidesPerView: 3,
+        },
+        1024: {
+          slidesPerView: 4,
+        },
+      },
+    });
+
+    // for testimonialas
+    var swiper = new Swiper(".reviews-slider", {
+            spaceBetween:10,
+            loop:true,
+            centeredSlides:true,
+            autoplay:{
+                delay:9000,
+                disableOnInteraction:false,
+            },
+            navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+        },
+        450: {
+          slidesPerView: 2,
+        },
+        768: {
+          slidesPerView: 3,
+        },
+        1024: {
+          slidesPerView: 4,
+        },
+      },
+    });
+    </script>
+</body>
+</html>
